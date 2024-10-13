@@ -1,0 +1,42 @@
+mybatis:
+    configuration:
+        cacheEnabled: false
+        mapUnderscoreToCamelCase: true
+
+    mapper-locations: classpath:/mapping/*.xml
+server:
+    port: 8080
+
+spring:
+    datasource:
+        driver-class-name: com.mysql.jdbc.Driver
+        password: zhoukangkai666
+        url: jdbc:mysql://127.0.0.1:3306/{仓库名}?useSSL=false&useUnicode=true&characterEncoding=utf8
+        username: root
+    main:
+        banner-mode: off
+    jackson:
+        date-format: yyyy-MM-dd HH:mm:ss
+        time-zone: GMT+8
+        #    Knife4j配置
+    mvc:
+        path match:
+            matching-strategy: ANT_PATH_MATCHER
+    thymeleaf:
+        cache: true
+        check-template: true
+        check-template-location: true
+        servlet:
+            content-type: text/html
+        enabled: true
+        encoding: UTF-8
+        excluded-view-names: ''
+        mode: HTML5
+        prefix: classpath:/templates/
+        suffix: .html
+    application:
+        name: Bodhi-files_system
+
+    web:
+        resources:
+            static-locations: classpath:/static/
