@@ -30,7 +30,7 @@ public class CodeGenerator {
 
         //数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:mysql:///bodhi-file_system?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true");
+        dsc.setUrl("jdbc:mysql://127.0.0.1:3306/bodhi-files_system?useSSL=false&useUnicode=true&characterEncoding=utf8");
         dsc.setDriverName("com.mysql.cj.jdbc.Driver");
         dsc.setUsername("root");
         dsc.setPassword("zhoukangkai666");
