@@ -40,3 +40,18 @@ spring:
     web:
         resources:
             static-locations: classpath:/static/
+knife4j:
+    enable: true
+    openapi:
+        title: Bodhi-files_system
+        description: Bodhi后端微服务——文件系统
+        version: 1.0.0
+        concat:
+            - jojo
+        email: e1349686@u.nus.edu
+        group:
+          admin:
+              group-name: 后端接口分组
+              api-rule: package
+              api-rule-resources:
+                - com.nus.zkk.bodhifiles_system

@@ -96,9 +96,8 @@
 <!--		Knife4j配置-->
 		<dependency>
 			<groupId>com.github.xiaoymin</groupId>
-			<artifactId>knife4j-spring-boot-starter</artifactId>
-			<!--在引用时请在maven中央仓库搜索3.X最新版本号-->
-			<version>3.0.2</version>
+			<artifactId>knife4j-openapi2-spring-boot-starter</artifactId>
+			<version>4.5.0</version>
 		</dependency>
 <!--		Hutool-->
 		<dependency>
