@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nus.zkk.bodhifiles_system.mapper.FileInfoMapper">
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, user_id, parent_id, TENANT_ID, REVISION, CREATED_BY, CREATED_TIME, UPDATED_BY, UPDATED_TIME, url, name, file_name, suffix, is_img, size, type, put_time, is_dir, source
+    </sql>
+
+</mapper>
