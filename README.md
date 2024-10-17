@@ -57,12 +57,16 @@ SWE5006项目：Bodhi后端微服务——文件系统
 ###### 开发前的配置要求
 
 1. Java 17
-2. Springboot 3.2.10
+2. Springboot 2.7.15
+3. Mybatis 2.2.0
+4. Mysql 8.0.29
+5. Knife4j-openapi2 4.5.0
+6. Mybatis-plus 3.4.1
 
 ###### **安装步骤**
 
-1. 
-2. 
+1. 本地运行sql脚本，在application.yml修改自己的数据库名字和账户密码
+2. clone仓库后，直接点击运行BodhiFilesSystemApplication即可
 
 ```sh
 git clone https://github.com/jojowink/Bodhi-files_system.git
@@ -72,6 +76,33 @@ git clone https://github.com/jojowink/Bodhi-files_system.git
 eg:
 
 ```
+├─sql脚本
+├─src
+│  ├─main
+│  │  ├─java
+│  │  │  └─com
+│  │  │      └─nus
+│  │  │          └─zkk
+│  │  │              └─bodhifiles_system
+│  │  │                  ├─controller       控制层，接口位置
+│  │  │                  ├─entity           实体，存储了数据库实体
+│  │  │                  │  └─dto           数据传输对象
+│  │  │                  ├─mapper           映射层
+│  │  │                  ├─service          服务层，定义了主要的服务
+│  │  │                  │  └─impl          服务实现类
+│  │  │                  └─utils            存储了所用到的其他工具
+│  │  └─resources
+│  │      ├─mapping                         mapper的映射xml文件
+│  │      ├─static                          静态资源
+│  │      └─templates                       前端界面
+│  └─test                                   测试
+│      └─java
+│          └─com
+│              └─nus
+│                  └─zkk
+│                      └─bodhifiles_system
+                         
+
 
 
 ```
@@ -90,7 +121,12 @@ eg:
 
 ### 使用到的框架
 
-- 
+- Springboot 2.7.15
+- Mybatis
+- Mybatis-plus
+- lombok
+- Knife4j
+- Hutool
 
 ### 贡献者
 
