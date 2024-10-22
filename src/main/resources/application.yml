@@ -8,10 +8,14 @@ server:
     port: 8080
 
 spring:
+    jpa:
+        properties:
+          hibernate:
+              dialect: org.hibernate.dialect.MySQLDialect
     datasource:
         driver-class-name: com.mysql.cj.jdbc.Driver
         password: zhoukangkai666
-        url: jdbc:mysql://127.0.0.1:3306/bodhi-files_system?useSSL=false&useUnicode=true&characterEncoding=utf8
+        url: jdbc:mysql://127.0.0.1:3306/bodhi-files_system?useSSL=false&useUnicode=true&characterEncoding=utf8&allowPublicKeyRetrieval=true
         username: root
     main:
         banner-mode: off
