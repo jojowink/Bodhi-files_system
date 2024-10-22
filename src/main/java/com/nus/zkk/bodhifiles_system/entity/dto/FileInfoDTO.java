@@ -1,10 +1,12 @@
 package com.nus.zkk.bodhifiles_system.entity.dto;
 
+import io.swagger.models.auth.In;
 import lombok.Data;
 
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @ author jojo
@@ -16,24 +18,29 @@ public class FileInfoDTO implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
-    private Integer id; // 文件ID
-    private Integer userId; // 用户ID
-    private Integer parentId; // 父级ID
-    private String url; // 资源路径
-    private String name; // 资源原始名称
-    private String fileName; // 资源名称
-    private String suffix; // 后缀名
-    private Boolean isImg; // 是否图片
-    private Integer size; // 文件大小
-    private String type; // 文件展示类型
-    private Date putTime; // 上传时间
-    private Boolean isDir; // 是否目录
-    private String source; // 来源
-    private String tenantId; // 租户号
-    private Integer revision; // 乐观锁
-    private Date createdTime; // 创建时间
-    private String updatedBy; // 更新人
-    private Date updatedTime; // 更新时间
-    private String createdBy; // 创建人
+    private Integer id;                       // 文件或文件夹的唯一标识符
+    private Integer userId;
+    private Integer parentId;
+    private String name;                      // 文件或文件夹名称
+    private String path;                      // 文件或文件夹的路径
+    private String absolutePath;              // 文件或文件夹的绝对路径
+    private String type;                      // 类型（文件或文件夹）
+    private String url;
+    private String suffix;
+    private Integer curChild;
+    private Integer offset;
+    private Boolean isMd;                     // 是否为 Markdown 文件
+    private Boolean isImg;                    // 是否为图片
+    private Boolean isDir;                    // 是否为目录
+    private Integer size;                     // 文件大小
+    private Date putTime;
+    private Date createdTime;
+    private Date updatedTime;
+    private String createdBy;                 // 创建人
+    private String updatedBy;                 // 更新人
+    private String source;
+    private List<FileInfoDTO> children;      // 子文件或子文件夹列表
+
+
 
 }
