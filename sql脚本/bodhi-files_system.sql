@@ -11,7 +11,7 @@
  Target Server Version : 80031
  File Encoding         : 65001
 
- Date: 17/10/2024 12:57:45
+ Date: 22/10/2024 19:24:20
 */
 
 SET NAMES utf8mb4;
@@ -24,30 +24,34 @@ DROP TABLE IF EXISTS `file_info`;
 CREATE TABLE `file_info`  (
   `id` int NOT NULL AUTO_INCREMENT,
   `user_id` int NULL DEFAULT NULL COMMENT '用户id',
+  `name` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '文件或文件夹名称',
   `parent_id` int NULL DEFAULT NULL,
-  `tenant_id` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '租户号',
-  `revision` int NULL DEFAULT NULL COMMENT '乐观锁',
+  `type` enum('file','folder') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '类型是文件或文件夹',
+  `url` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '资源路径',
+  `suffix` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '后缀名',
+  `cur_child` int NULL DEFAULT NULL COMMENT '当前子文件夹的索引',
+  `offset` int NULL DEFAULT NULL COMMENT '偏移量',
+  `is_md` bit(1) NULL DEFAULT NULL COMMENT '是否为Markdown文件',
+  `is_img` bit(1) NULL DEFAULT NULL COMMENT '是否图片',
+  `is_dir` bit(1) NULL DEFAULT NULL COMMENT '是否目录',
+  `size` int NULL DEFAULT NULL COMMENT '尺寸',
+  `put_time` datetime NULL DEFAULT NULL COMMENT '上传时间',
   `created_by` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '创建人',
   `created_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
   `updated_by` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '更新人',
   `updated_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
-  `url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '资源路径',
-  `name` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '资源原始名称',
-  `file_name` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '资源名称',
-  `suffix` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '后缀名',
-  `is_img` bit(1) NULL DEFAULT NULL COMMENT '是否图片',
-  `size` int NULL DEFAULT NULL COMMENT '尺寸',
-  `type` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '文件展示类型，非后缀名',
-  `put_time` datetime NULL DEFAULT NULL COMMENT '上传时间',
-  `is_dir` bit(1) NULL DEFAULT NULL COMMENT '是否目录',
   `source` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '来源',
+  `path` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '文件或文件夹的路径',
+  `absolute_path` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '文件或文件夹的绝对路径',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '文件资源表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '文件资源表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of file_info
 -- ----------------------------
-INSERT INTO `file_info` VALUES (1, 1, 1, '1', 0, 'jojo', '2024-10-17 00:00:00', 'jojo', '2024-10-17 00:00:00', 'www.baidu.com', '百度网站', '图片', 'jpg', b'1', 15, 'picture', '2024-10-17 00:00:00', b'0', 'jojo');
-INSERT INTO `file_info` VALUES (2, 2, 2, '1', 0, 'jojo', '2024-10-17 12:17:11', 'jojo', '2024-10-17 12:17:18', 'www.123.com', '123', 'nishizhu', 'jpg', b'1', 33, 'picture', '2024-10-17 12:18:09', b'0', 'jojo');
+INSERT INTO `file_info` VALUES (1, 1, '17-无人机相关组件-1140', NULL, 'folder', '', '', -1, -1, b'0', b'0', b'1', NULL, '2024-10-22 16:29:34', 'jojo', '2024-10-22 16:29:43', 'jojo', '2024-10-22 16:29:54', NULL, '/Users/cheng-xuanzhu/Downloads/17-无人机相关组件-1140', '/Users/cheng-xuanzhu/Downloads/17-无人机相关组件-1140');
+INSERT INTO `file_info` VALUES (2, 1, '17-无人机相关组件-1140.jpg', 1, 'file', 'www.baidu.com/1', '.jpg', -1, -1, b'0', b'1', b'0', 512, '2024-10-22 16:32:32', 'jojo', '2024-10-22 16:32:39', 'jojo', '2024-10-22 16:32:45', NULL, '/Users/cheng-xuanzhu/Downloads/17-无人机相关组件-1140/17-无人机相关组件-1140.jpg', '/Users/cheng-xuanzhu/Downloads/17-无人机相关组件-1140/17-无人机相关组件-1140.jpg');
+INSERT INTO `file_info` VALUES (3, 1, '子文件夹', 1, 'folder', NULL, NULL, -1, -1, b'0', b'0', b'1', NULL, '2024-10-22 16:39:27', 'jojo', '2024-10-22 16:39:33', 'jojo', '2024-10-22 16:39:41', NULL, '/Users/cheng-xuanzhu/Downloads/17-无人机相关组件-1140/子文件夹\', \'Users/cheng-xuanzhu/Downloads/17-无人机相关组件-1140/子文件夹', '/Users/cheng-xuanzhu/Downloads/17-无人机相关组件-1140/子文件夹\', \'Users/cheng-xuanzhu/Downloads/17-无人机相关组件-1140/子文件夹');
+INSERT INTO `file_info` VALUES (4, 3, '子文件.jpg', NULL, 'file', 'www.baidu.com/1', '.jpg', -1, -1, b'0', b'1', b'0', 512, '2024-10-22 16:41:12', 'jojo', '2024-10-22 16:41:18', 'jojo', '2024-10-22 16:41:24', NULL, '/Users/cheng-xuanzhu/Downloads/17-无人机相关组件-1140/子文件夹/子文件.jpg', '/Users/cheng-xuanzhu/Downloads/17-无人机相关组件-1140/子文件夹/子文件.jpg');
 
 SET FOREIGN_KEY_CHECKS = 1;
