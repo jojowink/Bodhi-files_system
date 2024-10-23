@@ -3,6 +3,7 @@ package com.nus.zkk.bodhifiles_system.service;
 import com.nus.zkk.bodhifiles_system.entity.FileInfo;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.nus.zkk.bodhifiles_system.entity.dto.FileInfoDTO;
+import com.nus.zkk.bodhifiles_system.entity.dto.OpenFileDTO;
 
 import java.util.List;
 
@@ -16,4 +17,6 @@ import java.util.List;
  */
 public interface FileInfoService extends IService<FileInfo> {
     List<FileInfoDTO> getFilesByUserId(Integer userId);
+
+    List<OpenFileDTO> getFileUrlById(Integer id);
 }

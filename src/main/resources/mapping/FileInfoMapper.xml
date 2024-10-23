@@ -8,5 +8,20 @@
         WHERE user_id = #{userId}
     </select>
 
+    <select id="getFilesById" resultType="com.nus.zkk.bodhifiles_system.entity.FileInfo">
+        SELECT
+            id,
+            name,
+            path,
+            absolute_path,
+            type,
+            is_md,
+            offset,
+            cur_child,
+            url
+        FROM file_info
+        WHERE id = #{id}
+    </select>
+
 
 </mapper>
