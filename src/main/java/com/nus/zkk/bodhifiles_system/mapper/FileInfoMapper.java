@@ -21,4 +21,5 @@ public interface FileInfoMapper extends BaseMapper<FileInfo> {
 //    通过user_id查找用户文件
     List<FileInfo> getFilesByUserId(@Param("userId") Integer userId);
 
+    List<FileInfo> getFilesById(@Param("id") Integer id);
 }

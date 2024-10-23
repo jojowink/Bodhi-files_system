@@ -2,6 +2,7 @@ package com.nus.zkk.bodhifiles_system.service.impl;
 
 import com.nus.zkk.bodhifiles_system.entity.FileInfo;
 import com.nus.zkk.bodhifiles_system.entity.dto.FileInfoDTO;
+import com.nus.zkk.bodhifiles_system.entity.dto.OpenFileDTO;
 import com.nus.zkk.bodhifiles_system.mapper.FileInfoMapper;
 import com.nus.zkk.bodhifiles_system.service.FileInfoService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -29,6 +31,34 @@ public class FileInfoServiceImpl extends ServiceImpl<FileInfoMapper, FileInfo> i
         List<FileInfo> fileInfoList = fileInfoMapper.getFilesByUserId(userId);
 
         return buildFileHierarchy(fileInfoList, null);
+    }
+
+    @Override
+    public List<OpenFileDTO> getFileUrlById(Integer id) {
+        List<FileInfo> fileInfos = fileInfoMapper.getFilesById(id);
+        return convertToOpenFileDTO(fileInfos);
+    }
+
+    /**
+     * 打开文件服务的转换DTO格式函数
+     * @param fileInfos
+     * @return
+     */
+    private List<OpenFileDTO> convertToOpenFileDTO(List<FileInfo> fileInfos) {
+        return fileInfos.stream().map(fileInfo -> {
+            OpenFileDTO dto = new OpenFileDTO();
+            dto.setId(fileInfo.getId());
+            dto.setName(fileInfo.getName());
+            dto.setPath(fileInfo.getPath());
+            dto.setAbsolutePath(fileInfo.getAbsolutePath());
+            dto.setType(fileInfo.getType());
+            dto.setIsMd(fileInfo.getIsMd());
+            dto.setOffset(fileInfo.getOffset());
+            dto.setCurChild(fileInfo.getCurChild());
+            dto.setUrl(fileInfo.getUrl());
+            return dto;
+
+        }).collect(Collectors.toList());
     }
 
     /**
