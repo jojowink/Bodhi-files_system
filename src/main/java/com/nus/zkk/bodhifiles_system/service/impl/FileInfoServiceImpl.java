@@ -97,6 +97,8 @@ public class FileInfoServiceImpl extends ServiceImpl<FileInfoMapper, FileInfo> i
                 List<FileInfoDTO> children = buildFileHierarchy(files, file.getId());
                 if (!children.isEmpty()) {
                     dto.setChildren(children);
+                } else {
+                    dto.setChildren(new ArrayList<>());
                 }
                 fileInfoDTOS.add(dto);
             }
