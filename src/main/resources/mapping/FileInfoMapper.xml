@@ -23,5 +23,10 @@
         WHERE id = #{id}
     </select>
 
+    <insert id="insertFileInfo" parameterType="map">
+        INSERT into file_info(url, path,name,type)
+        values (#{path},#{path}, #{name},#{type})
+    </insert>
+
 
 </mapper>
