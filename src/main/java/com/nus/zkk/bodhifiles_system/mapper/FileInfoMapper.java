@@ -22,4 +22,6 @@ public interface FileInfoMapper extends BaseMapper<FileInfo> {
     List<FileInfo> getFilesByUserId(@Param("userId") Integer userId);
 
     List<FileInfo> getFilesById(@Param("id") Integer id);
+
+    void insertFileInfo(@Param("path") String path, @Param("name") String name, @Param("type") String type);
 }

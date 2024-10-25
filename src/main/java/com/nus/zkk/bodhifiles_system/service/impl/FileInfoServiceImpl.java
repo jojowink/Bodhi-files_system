@@ -40,6 +40,26 @@ public class FileInfoServiceImpl extends ServiceImpl<FileInfoMapper, FileInfo> i
     }
 
     /**
+     * 打开文件实现方法
+     * @param path
+     * @param name
+     */
+    @Override
+    public void createNewFile(String path, String name) {
+        fileInfoMapper.insertFileInfo(path, name, "file");
+    }
+
+    /**
+     * 打开文件夹实现方法
+     * @param path
+     * @param name
+     */
+    @Override
+    public void createNewFolder(String path, String name) {
+        fileInfoMapper.insertFileInfo(path, name, "folder");
+    }
+
+    /**
      * 打开文件服务的转换DTO格式函数
      * @param fileInfos
      * @return

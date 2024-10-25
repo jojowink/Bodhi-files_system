@@ -19,4 +19,8 @@ public interface FileInfoService extends IService<FileInfo> {
     List<FileInfoDTO> getFilesByUserId(Integer userId);
 
     List<OpenFileDTO> getFileUrlById(Integer id);
+
+    void createNewFile(String path, String name);
+
+    void createNewFolder(String path, String name);
 }

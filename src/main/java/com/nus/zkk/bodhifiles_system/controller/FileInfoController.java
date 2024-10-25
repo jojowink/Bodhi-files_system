@@ -8,16 +8,14 @@ import org.springframework.beans.factory.ListableBeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -56,6 +54,28 @@ public class FileInfoController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Collections.emptyList());
         }
 
+    }
+
+    /**
+     * 新建文件
+     */
+    @PostMapping("create/file")
+    public ResponseEntity<?> createFile(@RequestBody Map<String, String> request) {
+        String path = request.get("path");
+        String name = request.get("name");
+        fileInfoService.createNewFile(path, name);
+        return ResponseEntity.ok().body(Collections.singletonMap("success", true));
+    }
+
+    /**
+     * 新建文件夹
+     */
+    @PostMapping("create/folder")
+    public ResponseEntity<?> craeteFolder(@RequestBody Map<String, String> request) {
+        String path = request.get("path");
+        String name = request.get("name");
+        fileInfoService.createNewFolder(path, name);
+        return ResponseEntity.ok().body(Collections.singletonMap("success", true));
     }
 }
 
