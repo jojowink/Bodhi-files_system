@@ -16,7 +16,6 @@ FROM openjdk:17-slim
 # 设置工作目录
 WORKDIR /app
 
-
 # 从构建阶段复制生成的 JAR 文件到当前镜像
 COPY --from=build /build/target/Bodhi-files_system-0.0.1-SNAPSHOT.jar /app/app.jar
 
