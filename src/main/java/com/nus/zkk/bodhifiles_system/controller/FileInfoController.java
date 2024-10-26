@@ -61,9 +61,13 @@ public class FileInfoController {
      */
     @PostMapping("create/file")
     public ResponseEntity<?> createFile(@RequestBody Map<String, String> request) {
+        int userId = Integer.parseInt(request.get("user_id"));
+        String absolutePath = request.get("absolute_path");
         String path = request.get("path");
+        int parentId = Integer.parseInt(request.get("parent_id"));
         String name = request.get("name");
-        fileInfoService.createNewFile(path, name);
+        System.out.println("Path: " + path + "\nparentID: " + parentId + "\nname:" + name);
+        fileInfoService.createNewFile(userId, path, absolutePath, parentId, name);
         return ResponseEntity.ok().body(Collections.singletonMap("success", true));
     }
 
@@ -72,9 +76,12 @@ public class FileInfoController {
      */
     @PostMapping("create/folder")
     public ResponseEntity<?> craeteFolder(@RequestBody Map<String, String> request) {
+        int userId = Integer.parseInt(request.get("user_id"));
+        String absolutePath = request.get("absolute_path");
         String path = request.get("path");
+        Integer parentId = Integer.parseInt(request.get("parent_id"));
         String name = request.get("name");
-        fileInfoService.createNewFolder(path, name);
+        fileInfoService.createNewFolder(userId, path, absolutePath, parentId, name);
         return ResponseEntity.ok().body(Collections.singletonMap("success", true));
     }
 }
