@@ -13,10 +13,10 @@ spring:
           hibernate:
               dialect: org.hibernate.dialect.MySQLDialect
     datasource:
-        driver-class-name: com.mysql.cj.jdbc.Driver
-        password: zhoukangkai666
-        url: jdbc:mysql://127.0.0.1:3306/bodhi-files_system?useSSL=false&useUnicode=true&characterEncoding=utf8&allowPublicKeyRetrieval=true
-        username: root
+        driver-class-name: org.postgresql.Driver
+        password: bodhiint
+        url: jdbc:postgresql://a0b3e412b8bcd4995aa03b0d4ce4c8c8-581959458.ap-southeast-1.elb.amazonaws.com:5432/app
+        username: bodhiint
     main:
         banner-mode: off
     jackson:

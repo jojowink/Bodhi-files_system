@@ -56,6 +56,12 @@
 			<artifactId>mybatis-spring-boot-starter</artifactId>
 			<version>2.2.0</version>
 		</dependency>
+<!--		PostgreSQL数据库依赖-->
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.3.0</version> <!-- 使用适合的版本号 -->
+		</dependency>
 
 		<dependency>
 			<groupId>com.mysql</groupId>
