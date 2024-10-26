@@ -62,7 +62,12 @@
 			<artifactId>postgresql</artifactId>
 			<version>42.3.0</version> <!-- 使用适合的版本号 -->
 		</dependency>
-
+<!--读取环境变量-->
+		<dependency>
+			<groupId>io.github.cdimascio</groupId>
+			<artifactId>java-dotenv</artifactId>
+			<version>5.2.2</version>
+		</dependency>
 		<dependency>
 			<groupId>com.mysql</groupId>
 			<artifactId>mysql-connector-j</artifactId>

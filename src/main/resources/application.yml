@@ -5,18 +5,21 @@ mybatis:
 
     mapper-locations: classpath:/mapping/*.xml
 server:
-    port: 8080
+    port: 9377
 
 spring:
     jpa:
         properties:
           hibernate:
+              jdbc:
+                lob:
+                    non_contextual_creation: true
               dialect: org.hibernate.dialect.MySQLDialect
     datasource:
         driver-class-name: org.postgresql.Driver
-        password: bodhiint
-        url: jdbc:postgresql://a0b3e412b8bcd4995aa03b0d4ce4c8c8-581959458.ap-southeast-1.elb.amazonaws.com:5432/app
-        username: bodhiint
+        password: ${DATABASE_PASSWORD}
+        url: ${DATABASE_URL}
+        username: ${DATABASE_USERNAME}
     main:
         banner-mode: off
     jackson:
