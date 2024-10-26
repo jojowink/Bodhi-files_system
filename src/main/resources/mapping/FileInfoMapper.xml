@@ -24,8 +24,8 @@
     </select>
 
     <insert id="insertFileInfo" parameterType="map">
-        INSERT into file_info(url, path,name,type)
-        values (#{path},#{path}, #{name},#{type})
+        INSERT into file_info(user_id, path, parent_id, absolute_path, name,type)
+        values (#{userId}, #{path}, #{parentId}, #{absolutePath}, #{name},#{type})
     </insert>
 
 

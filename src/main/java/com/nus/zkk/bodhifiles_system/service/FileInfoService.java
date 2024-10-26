@@ -20,7 +20,7 @@ public interface FileInfoService extends IService<FileInfo> {
 
     List<OpenFileDTO> getFileUrlById(Integer id);
 
-    void createNewFile(String path, String name);
+    void createNewFile(Integer UserId, String Path, String absolutePath, int parentId, String name);
 
-    void createNewFolder(String path, String name);
+    void createNewFolder(Integer UserId, String Path, String absolutePath, int parentId, String name);
 }

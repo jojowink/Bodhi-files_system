@@ -45,8 +45,8 @@ public class FileInfoServiceImpl extends ServiceImpl<FileInfoMapper, FileInfo> i
      * @param name
      */
     @Override
-    public void createNewFile(String path, String name) {
-        fileInfoMapper.insertFileInfo(path, name, "file");
+    public void createNewFile(Integer userId, String path, String absolutePath, int parentId, String name) {
+        fileInfoMapper.insertFileInfo(userId, path, absolutePath, parentId, name, "file");
     }
 
     /**
@@ -55,8 +55,8 @@ public class FileInfoServiceImpl extends ServiceImpl<FileInfoMapper, FileInfo> i
      * @param name
      */
     @Override
-    public void createNewFolder(String path, String name) {
-        fileInfoMapper.insertFileInfo(path, name, "folder");
+    public void createNewFolder(Integer userId, String path, String absolutePath, int parentId, String name) {
+        fileInfoMapper.insertFileInfo(userId, path, absolutePath, parentId, name, "folder");
     }
 
     /**
